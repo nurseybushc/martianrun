@@ -42,7 +42,7 @@ public class AndroidLauncher extends AndroidApplication implements GameHelper.Ga
     private static String SAVED_LEADERBOARD_REQUESTED = "SAVED_LEADERBOARD_REQUESTED";
     private static String SAVED_ACHIEVEMENTS_REQUESTED = "SAVED_ACHIEVEMENTS_REQUESTED";
 
-    private GameHelper gameHelper;
+   private GameHelper gameHelper;
 
     private AdView mAdView;
     private boolean mLeaderboardRequested;
@@ -68,53 +68,53 @@ public class AndroidLauncher extends AndroidApplication implements GameHelper.Ga
         layout.addView(gameView);
 
 
-        mAdView = createAdView();
-        mAdView.loadAd(createAdRequest());
+        //mAdView = createAdView();
+        //mAdView.loadAd(createAdRequest());
 
-        layout.addView(mAdView, getAdParams());
+        //layout.addView(mAdView, getAdParams());
 
         setContentView(layout);
 
-        gameHelper = new GameHelper(this, GameHelper.CLIENT_GAMES);
-        gameHelper.setup(this);
-        gameHelper.setMaxAutoSignInAttempts(0);
+        //gameHelper = new GameHelper(this, GameHelper.CLIENT_GAMES);
+        //gameHelper.setup(this);
+        //gameHelper.setMaxAutoSignInAttempts(0);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        gameHelper.onStart(this);
-        GoogleAnalytics.getInstance(this).reportActivityStart(this);
+        //gameHelper.onStart(this);
+       // GoogleAnalytics.getInstance(this).reportActivityStart(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        gameHelper.onStop();
-        GoogleAnalytics.getInstance(this).reportActivityStop(this);
+        //gameHelper.onStop();
+        //GoogleAnalytics.getInstance(this).reportActivityStop(this);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        gameHelper.onActivityResult(requestCode, resultCode, data);
+        //gameHelper.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putBoolean(SAVED_LEADERBOARD_REQUESTED, mLeaderboardRequested);
-        outState.putBoolean(SAVED_ACHIEVEMENTS_REQUESTED, mAchievementsRequested);
+        //outState.putBoolean(SAVED_LEADERBOARD_REQUESTED, mLeaderboardRequested);
+        //outState.putBoolean(SAVED_ACHIEVEMENTS_REQUESTED, mAchievementsRequested);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        mLeaderboardRequested = savedInstanceState.getBoolean(SAVED_LEADERBOARD_REQUESTED, false);
-        mAchievementsRequested = savedInstanceState.getBoolean(SAVED_ACHIEVEMENTS_REQUESTED, false);
+        //mLeaderboardRequested = savedInstanceState.getBoolean(SAVED_LEADERBOARD_REQUESTED, false);
+        //mAchievementsRequested = savedInstanceState.getBoolean(SAVED_ACHIEVEMENTS_REQUESTED, false);
     }
 
-    private AdRequest createAdRequest() {
+    /*private AdRequest createAdRequest() {
         return new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
@@ -137,7 +137,7 @@ public class AndroidLauncher extends AndroidApplication implements GameHelper.Ga
         adParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
 
         return adParams;
-    }
+    }*/
 
     @Override
     public void onSignInFailed() {
@@ -166,44 +166,44 @@ public class AndroidLauncher extends AndroidApplication implements GameHelper.Ga
 
     @Override
     public void displayAd() {
-        mAdView.setVisibility(View.VISIBLE);
+        //mAdView.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideAd() {
-        mAdView.setVisibility(View.GONE);
+        //mAdView.setVisibility(View.GONE);
     }
 
     @Override
     public void submitScore(int score) {
-        if (gameHelper.isSignedIn()) {
+        /*if (gameHelper.isSignedIn()) {
             Games.Leaderboards.submitScore(gameHelper.getApiClient(),
                     getString(R.string.leaderboard_high_scores), score);
         } else {
             GameManager.getInstance().saveScore(score);
-        }
+        }*/
     }
 
     @Override
     public void displayLeaderboard() {
-        if (gameHelper.isSignedIn()) {
+        /*if (gameHelper.isSignedIn()) {
             startActivityForResult(Games.Leaderboards.getLeaderboardIntent(gameHelper.getApiClient(),
                     getString(R.string.leaderboard_high_scores)), 24);
         } else {
             gameHelper.beginUserInitiatedSignIn();
             mLeaderboardRequested = true;
-        }
+        }*/
     }
 
     @Override
     public void displayAchievements() {
-        if (gameHelper.isSignedIn()) {
+        /*if (gameHelper.isSignedIn()) {
             startActivityForResult(
                     Games.Achievements.getAchievementsIntent(gameHelper.getApiClient()), 25);
         } else {
             gameHelper.beginUserInitiatedSignIn();
             mAchievementsRequested = true;
-        }
+        }*/
     }
 
     @Override
@@ -219,18 +219,18 @@ public class AndroidLauncher extends AndroidApplication implements GameHelper.Ga
 
     @Override
     public void unlockAchievement(String id) {
-        if (gameHelper.isSignedIn()) {
+        /*if (gameHelper.isSignedIn()) {
             Games.Achievements.unlock(gameHelper.getApiClient(), id);
             GameManager.getInstance().setAchievementUnlocked(id);
-        }
+        }*/
     }
 
     @Override
     public void incrementAchievement(String id, int steps) {
-        if (gameHelper.isSignedIn()) {
+        /*if (gameHelper.isSignedIn()) {
             Games.Achievements.increment(gameHelper.getApiClient(), id, steps);
             GameManager.getInstance().incrementAchievementCount(id, steps);
-        }
+        }*/
     }
 
     @Override

@@ -4,7 +4,7 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.0.0'
+        classpath 'com.android.tools.build:gradle:2.3.2'
     }
 }
 
@@ -15,8 +15,8 @@ allprojects {
     version = '1.0'
     ext {
         appName = 'Martian Run!'
-        gdxVersion = '1.1.0'
-        roboVMVersion = '0.0.13'
+        gdxVersion = '1.2.0'
+        roboVMVersion = '2.3.0'
     }
 
     repositories {
@@ -24,6 +24,7 @@ allprojects {
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        maven { url "https://maven.google.com/"}
     }
 }
 
@@ -48,7 +49,8 @@ project(":android") {
     dependencies {
         compile project(":core")
         compile fileTree(dir: 'libs', include: '*.jar')
-        compile "com.google.android.gms:play-services:4.4.52"
+        compile "com.google.android.gms:play-services:7.+"
+        compile 'com.android.support:appcompat-v7:23.0.1'
         compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"

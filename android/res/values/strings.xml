@@ -19,6 +19,23 @@
 <resources>
 
     <string name="app_name">Martian Run!</string>
+<string name="app_id">unocode-martian-run</string>
+    <string name="leaderboard_high_scores">leaderboard_high_scores</string>
+    <string name="achievement_getting_started">achievement_getting_started</string>
+
+    <string name="achievement_like_a_rover">achievement_like_a_rover</string>
+
+    <string name="achievement_spirit">achievement_spirit</string>
+    <string name="achievement_curiosity">achievement_curiosity</string>
+    <string name="achievement_5k_club">achievement_5k_club</string>
+    <string name="achievement_10k_club">achievement_10k_club</string>
+    <string name="achievement_25k_club">achievement_25k_club</string>
+    <string name="achievement_50k_club">achievement_50k_club</string>
+<string name="achievement_10_jump_street">achievement_10_jump_street</string>
+    <string name="achievement_100_jump_street">achievement_100_jump_street</string>
+    <string name="achievement_500_jump_street">achievement_500_jump_street</string>
+    <string name="ad_unit_id">ad_unit_id</string>
+
 
     <!-- GameHelper strings -->
     <string name="gamehelper_sign_in_failed">Failed to sign in. Please check your network connection and try again.</string>

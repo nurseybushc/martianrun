@@ -1,15 +1,15 @@
 def loadProperty(name) {
     hasProperty(name) ? "${getProperty(name)}" : ""
 }
-
 android {
-    buildToolsVersion "21.1.2"
-    compileSdkVersion 21
+    buildToolsVersion '26.0.2'
+    compileSdkVersion 26
 
     defaultConfig {
         applicationId "com.gamestudio24.cityescape.android"
-        targetSdkVersion 21
-        minSdkVersion 9
+        //noinspection OldTargetApi
+        targetSdkVersion 19
+        minSdkVersion 14
         versionCode 21
         versionName "1.5.1"
     }
@@ -23,6 +23,7 @@ android {
             renderscript.srcDirs = ['src']
             res.srcDirs = ['res']
             assets.srcDirs = ['assets']
+            jniLibs.srcDir 'libs'
         }
 
         instrumentTest.setRoot('tests')
@@ -43,20 +44,18 @@ android {
         }
     }
 }
-
 // needed to add JNI shared libraries to APK when compiling on CLI
-tasks.withType(com.android.build.gradle.tasks.PackageApplication) { pkgTask ->
+/*tasks.withType(com.android.build.gradle.tasks.PackageApplication) { pkgTask ->
     pkgTask.jniFolders = new HashSet<File>()
     pkgTask.jniFolders.add(new File(projectDir, 'libs'))
-}
-
+}*/
 // called every time gradle gets executed, takes the native dependencies of
 // the natives configuration, and extracts them to the proper libs/ folders
 // so they get packed with the APK.
 task copyAndroidNatives() {
-    file("libs/armeabi/").mkdirs();
-    file("libs/armeabi-v7a/").mkdirs();
-    file("libs/x86/").mkdirs();
+    file("libs/armeabi/").mkdirs()
+    file("libs/armeabi-v7a/").mkdirs()
+    file("libs/x86/").mkdirs()
 
     configurations.natives.files.each { jar ->
         def outputDir = null
@@ -72,7 +71,6 @@ task copyAndroidNatives() {
         }
     }
 }
-
 task run(type: Exec) {
     def path
     def localProperties = project.file("../local.properties")
@@ -94,7 +92,6 @@ task run(type: Exec) {
     def adb = path + "/platform-tools/adb"
     commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.gamestudio24.cityescape.android/com.gamestudio24.martianrun.android.AndroidLauncher'
 }
-
 // sets up the Android Eclipse project, using the old Ant based build.
 eclipse {
     // need to specify Java source sets explicitely, SpringSource Gradle Eclipse plugin
@@ -125,7 +122,6 @@ eclipse {
         buildCommand "com.android.ide.eclipse.adt.ApkBuilder"
     }
 }
-
 // sets up the Android Idea project, using the old Ant based build.
 idea {
     module {
@@ -147,4 +143,7 @@ idea {
             }
         }
     }
+}
+
+dependencies {
 }
