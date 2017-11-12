@@ -4,7 +4,8 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        //classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:3.0.0'
     }
 }
 
@@ -31,7 +32,6 @@ allprojects {
 project(":desktop") {
     apply plugin: "java"
 
-
     dependencies {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
@@ -49,8 +49,11 @@ project(":android") {
     dependencies {
         compile project(":core")
         compile fileTree(dir: 'libs', include: '*.jar')
-        compile "com.google.android.gms:play-services:7.+"
-        compile 'com.android.support:appcompat-v7:23.0.1'
+        //compile "com.google.android.gms:play-services:7.+"
+        compile "com.google.android.gms:play-services-games:11.4.2"
+        compile "com.google.android.gms:play-services-plus:11.4.2"
+        //compile 'com.android.support:appcompat-v7:23.0.1'
+        compile 'com.android.support:appcompat-v7:27.0.0'
         compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
@@ -68,7 +71,6 @@ project(":android") {
 
 project(":core") {
     apply plugin: "java"
-
 
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"

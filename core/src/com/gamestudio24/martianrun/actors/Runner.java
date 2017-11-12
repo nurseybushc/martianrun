@@ -34,6 +34,7 @@ public class Runner extends GameActor {
 
     private boolean dodging;
     private boolean jumping;
+    private int jumpNum = 0;
     private boolean hit;
     private Animation runningAnimation;
     private TextureRegion jumpingTexture;
@@ -44,11 +45,14 @@ public class Runner extends GameActor {
     private Sound jumpSound;
     private Sound hitSound;
 
-    private int jumpCount;
+    private int jumpCount, doubleJumpCount, powerStompCount;
 
     public Runner(Body body) {
         super(body);
         jumpCount = 0;
+        doubleJumpCount = 0;
+        powerStompCount = 0;
+
         runningAnimation = AssetsManager.getAnimation(Constants.RUNNER_RUNNING_ASSETS_ID);
         stateTime = 0f;
         jumpingTexture = AssetsManager.getTextureRegion(Constants.RUNNER_JUMPING_ASSETS_ID);
@@ -62,7 +66,7 @@ public class Runner extends GameActor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        float x = screenRectangle.x - (screenRectangle.width * 0.1f);
+        float x = screenRectangle.x - (screenRectangle.width * 0.1f) +15;//chance add =15 to offest runner to right a bit
         float y = screenRectangle.y;
         float width = screenRectangle.width * 1.2f;
 
@@ -90,23 +94,28 @@ public class Runner extends GameActor {
 
     public void jump() {
 
-        if (!(jumping || dodging || hit)) {
+        //if (!(jumping || dodging || hit)) {
+        if(!(jumpNum > 1 || dodging || hit)) {//chance for doublejump--later check for upgrade
             body.applyLinearImpulse(getUserData().getJumpingLinearImpulse(), body.getWorldCenter(), true);
             jumping = true;
             AudioUtils.getInstance().playSound(jumpSound);
             jumpCount++;
+            if(jumpNum == 1) doubleJumpCount++;
+            jumpNum++;
         }
-
     }
 
     public void landed() {
+        jumpNum = 0;
         jumping = false;
     }
 
     public void dodge() {
-        if (!(jumping || hit)) {
+        //if (!(jumping || hit)) {
+        if ((!jumping || jumpNum > 1) && !hit) {//check if not jumping or on 2nd jump
             body.setTransform(getUserData().getDodgePosition(), getUserData().getDodgeAngle());
             dodging = true;
+            powerStompCount++;
         }
     }
 

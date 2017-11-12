@@ -164,7 +164,7 @@ public class GameStage extends Stage implements ContactListener {
 
     private void setUpAbout() {
         Rectangle aboutButtonBounds = new Rectangle(getCamera().viewportWidth * 23 / 25,
-                getCamera().viewportHeight * 13 / 20, getCamera().viewportHeight / 10,
+                getCamera().viewportHeight * 11 / 20, getCamera().viewportHeight / 10,//was 13
                 getCamera().viewportHeight / 10);
         aboutButton = new AboutButton(aboutButtonBounds, new GameAboutButtonListener());
         addActor(aboutButton);
@@ -180,7 +180,7 @@ public class GameStage extends Stage implements ContactListener {
 
     private void setUpAchievements() {
         Rectangle achievementsButtonBounds = new Rectangle(getCamera().viewportWidth * 23 / 25,
-                getCamera().viewportHeight / 2, getCamera().viewportHeight / 10,
+                getCamera().viewportHeight * 8/ 20, getCamera().viewportHeight / 10,
                 getCamera().viewportHeight / 10);
         achievementsButton = new AchievementsButton(achievementsButtonBounds,
                 new GameAchievementsButtonListener());
@@ -397,7 +397,7 @@ public class GameStage extends Stage implements ContactListener {
                 return;
             }
             runner.hit();
-            displayAd();
+            //displayAd();
             GameManager.getInstance().submitScore(score.getScore());
             onGameOver();
             GameManager.getInstance().addGamePlayed();
@@ -426,14 +426,14 @@ public class GameStage extends Stage implements ContactListener {
             runner.onDifficultyChange(GameManager.getInstance().getDifficulty());
             score.setMultiplier(GameManager.getInstance().getDifficulty().getScoreMultiplier());
 
-            displayAd();
+            //displayAd();
         }
 
     }
 
-    private void displayAd() {
-        GameManager.getInstance().displayAd();
-    }
+    //private void displayAd() {
+        //GameManager.getInstance().displayAd();
+    //}
 
     @Override
     public void endContact(Contact contact) {

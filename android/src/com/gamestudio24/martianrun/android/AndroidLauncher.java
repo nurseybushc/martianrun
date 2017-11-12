@@ -29,11 +29,11 @@ import com.gamestudio24.martianrun.MartianRun;
 import com.gamestudio24.martianrun.utils.Constants;
 import com.gamestudio24.martianrun.utils.GameEventListener;
 import com.gamestudio24.martianrun.utils.GameManager;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.games.Games;
+//import com.google.android.gms.ads.AdRequest;
+//import com.google.android.gms.ads.AdSize;
+//import com.google.android.gms.ads.AdView;
+//import com.google.android.gms.analytics.GoogleAnalytics;
+//import com.google.android.gms.games.Games;
 import com.google.games.basegameutils.GameHelper;
 
 public class AndroidLauncher extends AndroidApplication implements GameHelper.GameHelperListener,
@@ -44,7 +44,7 @@ public class AndroidLauncher extends AndroidApplication implements GameHelper.Ga
 
    private GameHelper gameHelper;
 
-    private AdView mAdView;
+  //  private AdView mAdView;
     private boolean mLeaderboardRequested;
     private boolean mAchievementsRequested;
 

@@ -55,7 +55,7 @@ public class Score extends Actor {
         if (getScore() == 0) {
             return;
         }
-        font.drawWrapped(batch, String.format("%d", getScore()), bounds.x, bounds.y, bounds.width, BitmapFont.HAlignment.RIGHT);
+        font.drawWrapped(batch, String.format("x%d\n%d", getMultiplier(),getScore()), bounds.x, bounds.y, bounds.width, BitmapFont.HAlignment.RIGHT);//chance show multipler
     }
 
     public int getScore() {
@@ -64,6 +64,10 @@ public class Score extends Actor {
 
     public void setMultiplier(int multiplier) {
         this.multiplier = multiplier;
+    }
+
+    public int getMultiplier() {
+        return this.multiplier;
     }
 
 }

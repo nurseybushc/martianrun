@@ -6,12 +6,13 @@ android {
     compileSdkVersion 26
 
     defaultConfig {
-        applicationId "com.gamestudio24.cityescape.android"
+        //applicationId "com.gamestudio24.cityescape.android"
         //noinspection OldTargetApi
         targetSdkVersion 19
         minSdkVersion 14
-        versionCode 21
-        versionName "1.5.1"
+        //chance incremented these
+        versionCode 22
+        versionName "1.5.2"
     }
 
     sourceSets {

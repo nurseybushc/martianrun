@@ -105,7 +105,7 @@ public class Constants {
     public static final String FONT_NAME = "roboto_bold.ttf";
 
     public static final String ABOUT_TEXT = "Developed by: @gamestudio24\nPowered by: " +
-            "@libgdx\nGraphics: @kenneywings\nMusic: @kmacleod";
+            "@libgdx\nGraphics: @kenneywings\nMusic: @kmacleod\nVersion:1.5.2\nVersionDate:10-31-17";
     public static final String SHARE_MESSAGE_PREFIX = "Check out " + GAME_NAME + " %s";
     public static final String SHARE_TITLE = "Share!";
     public static final String PAUSED_LABEL = "Paused";
