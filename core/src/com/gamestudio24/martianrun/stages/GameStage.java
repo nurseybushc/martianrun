@@ -31,6 +31,11 @@ import com.gamestudio24.martianrun.enums.Difficulty;
 import com.gamestudio24.martianrun.enums.GameState;
 import com.gamestudio24.martianrun.utils.*;
 
+import java.io.Console;
+import java.util.logging.Logger;
+
+import sun.rmi.runtime.Log;
+
 public class GameStage extends Stage implements ContactListener {
 
     private static final int VIEWPORT_WIDTH = Constants.APP_WIDTH;
@@ -398,10 +403,21 @@ public class GameStage extends Stage implements ContactListener {
             }
             runner.hit();
             //displayAd();
-            GameManager.getInstance().submitScore(score.getScore());
+            int thisGameScore = score.getScore();
+            int thisGameMult = score.getMultiplier();
+            int thisGameJumpCount = runner.getJumpCount();
+            int thisGameDoubleJumpCount = runner.getDoubleJumpCount();
+            int thisGamePowerStompCount = runner.getPowerStompCount();
+            int difficulty = GameManager.getInstance().getDifficulty().getLevel();
+            int difficultyScale = GameManager.getInstance().getDifficultyScale();
+            GameManager.getInstance().submitScore(thisGameScore);
             onGameOver();
             GameManager.getInstance().addGamePlayed();
-            GameManager.getInstance().addJumpCount(runner.getJumpCount());
+            GameManager.getInstance().addJumpCount(thisGameJumpCount);
+            GameManager.getInstance().addDoubleJumpCount(thisGameDoubleJumpCount);
+            GameManager.getInstance().addPowerStompCount(thisGamePowerStompCount);
+            System.out.println("GameEnd - score:" + thisGameScore + " | multi:" + thisGameMult + " | jumps:" + thisGameJumpCount + " | double jumps:" + thisGameDoubleJumpCount + " | power stomps:" + thisGamePowerStompCount + " | difficulty:" + difficulty + " | diffculty scale:" + difficultyScale);
+
         } else if ((BodyUtils.bodyIsRunner(a) && BodyUtils.bodyIsGround(b)) ||
                 (BodyUtils.bodyIsGround(a) && BodyUtils.bodyIsRunner(b))) {
             runner.landed();
@@ -417,7 +433,8 @@ public class GameStage extends Stage implements ContactListener {
 
         Difficulty currentDifficulty = GameManager.getInstance().getDifficulty();
 
-        if (totalTimePassed > GameManager.getInstance().getDifficulty().getLevel() * 5) {
+        GameManager.getInstance().setDifficultyScale(1);
+        if (totalTimePassed > GameManager.getInstance().getDifficulty().getLevel() * GameManager.getInstance().getDifficultyScale()) {
 
             int nextDifficulty = currentDifficulty.getLevel() + 1;
             String difficultyName = "DIFFICULTY_" + nextDifficulty;

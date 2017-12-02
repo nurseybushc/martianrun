@@ -32,6 +32,7 @@ public class GameManager implements GameEventListener {
 
     public static final String PREFERENCES_NAME = "preferences";
     private static final String MAX_SCORE_PREFERENCE = "max_score";
+    private static final String DIFFICULTY_SCALE_PREFERENCE = "difficulty_scale";
     private static final String ACHIEVEMENT_COUNT_PREFERENCE_SUFFIX = "_count";
     private static final String ACHIEVEMENT_UNLOCKED_PREFERENCE_SUFFIX = "_unlocked";
 
@@ -59,12 +60,24 @@ public class GameManager implements GameEventListener {
         return difficulty;
     }
 
+    public int getDifficultyScale() {
+        return getPreferences().getInteger(DIFFICULTY_SCALE_PREFERENCE, 5);
+    }
+
+    public void setDifficultyScale(int scaleLevel) {
+        Preferences prefs = getPreferences();
+        prefs.putInteger(DIFFICULTY_SCALE_PREFERENCE, scaleLevel);
+        prefs.flush();
+    }
+
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
     }
 
     public boolean isMaxDifficulty() {
-        return difficulty == Difficulty.values()[Difficulty.values().length - 1];
+        boolean atMixDiff = difficulty == Difficulty.values()[Difficulty.values().length - 1];
+        //System.out.println("GameMan - difficulty:" + difficulty + " | atMaxDiff:" + atMixDiff);
+        return atMixDiff;
     }
 
     public void resetDifficulty() {
@@ -189,6 +202,36 @@ public class GameManager implements GameEventListener {
         return gameEventListener.get500JumpStreetAchievementId();
     }
 
+    @Override
+    public String get10DoubleJumpStreetAchievementId() {
+        return gameEventListener.get10DoubleJumpStreetAchievementId();
+    }
+
+    @Override
+    public String get100DoubleJumpStreetAchievementId() {
+        return gameEventListener.get100DoubleJumpStreetAchievementId();
+    }
+
+    @Override
+    public String get500DoubleJumpStreetAchievementId() {
+        return gameEventListener.get500DoubleJumpStreetAchievementId();
+    }
+
+    @Override
+    public String get10PowerStompStreetAchievementId() {
+        return gameEventListener.get10PowerStompStreetAchievementId();
+    }
+
+    @Override
+    public String get100PowerStompStreetAchievementId() {
+        return gameEventListener.get100PowerStompStreetAchievementId();
+    }
+
+    @Override
+    public String get500PowerStompStreetAchievementId() {
+        return gameEventListener.get500PowerStompStreetAchievementId();
+    }
+
     private Preferences getPreferences() {
         return Gdx.app.getPreferences(PREFERENCES_NAME);
     }
@@ -237,7 +280,6 @@ public class GameManager implements GameEventListener {
     }
 
     public void addJumpCount(int count) {
-
         if (count <= 0) {
             return;
         }
@@ -255,7 +297,46 @@ public class GameManager implements GameEventListener {
         }
 
         incrementAchievement(get500JumpStreetAchievementId(), count);
+    }
 
+    public void addDoubleJumpCount(int count) {
+        if (count <= 0) {
+            return;
+        }
+
+        if (getAchievementCount(get500DoubleJumpStreetAchievementId()) > 500) {
+            return;
+        }
+
+        if (getAchievementCount(get500DoubleJumpStreetAchievementId()) <= 10) {
+            incrementAchievement(get10DoubleJumpStreetAchievementId(), count);
+        }
+
+        if (getAchievementCount(get500DoubleJumpStreetAchievementId()) <= 100) {
+            incrementAchievement(get100DoubleJumpStreetAchievementId(), count);
+        }
+
+        incrementAchievement(get500DoubleJumpStreetAchievementId(), count);
+    }
+
+    public void addPowerStompCount(int count) {
+        if (count <= 0) {
+            return;
+        }
+
+        if (getAchievementCount(get500PowerStompStreetAchievementId()) > 500) {
+            return;
+        }
+
+        if (getAchievementCount(get500PowerStompStreetAchievementId()) <= 10) {
+            incrementAchievement(get10PowerStompStreetAchievementId(), count);
+        }
+
+        if (getAchievementCount(get500PowerStompStreetAchievementId()) <= 100) {
+            incrementAchievement(get100PowerStompStreetAchievementId(), count);
+        }
+
+        incrementAchievement(get500PowerStompStreetAchievementId(), count);
     }
 
     public void setAchievementUnlocked(String id) {

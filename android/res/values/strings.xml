@@ -34,6 +34,12 @@
 <string name="achievement_10_jump_street">achievement_10_jump_street</string>
     <string name="achievement_100_jump_street">achievement_100_jump_street</string>
     <string name="achievement_500_jump_street">achievement_500_jump_street</string>
+    <string name="achievement_10_double_jump_street">achievement_10_double_jump_street</string>
+    <string name="achievement_100_double_jump_street">achievement_100_double_jump_street</string>
+    <string name="achievement_500_double_jump_street">achievement_500_double_jump_street</string>
+    <string name="achievement_10_power_stomp_street">achievement_10_power_stomp_street</string>
+    <string name="achievement_100_power_stomp_street">achievement_100_power_stomp_street</string>
+    <string name="achievement_500_power_stomp_street">achievement_500_power_stomp_street</string>
     <string name="ad_unit_id">ad_unit_id</string>
 
 

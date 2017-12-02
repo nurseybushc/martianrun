@@ -154,4 +154,8 @@ public class Runner extends GameActor {
     public int getJumpCount() {
         return jumpCount;
     }
+
+    public int getDoubleJumpCount() { return doubleJumpCount;}
+
+    public int getPowerStompCount() { return powerStompCount;}
 }

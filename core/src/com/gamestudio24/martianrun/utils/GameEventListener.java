@@ -130,4 +130,14 @@ public interface GameEventListener {
      */
     public String get500JumpStreetAchievementId();
 
+
+    public String get10DoubleJumpStreetAchievementId();
+
+    public String get100DoubleJumpStreetAchievementId();
+    public String get500DoubleJumpStreetAchievementId();
+    public String get10PowerStompStreetAchievementId();
+    public String get100PowerStompStreetAchievementId();
+    public String get500PowerStompStreetAchievementId();
+
+
 }

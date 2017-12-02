@@ -33,7 +33,11 @@ public enum Difficulty {
     DIFFICULTY_10(10, new Vector2(-28f, 0f), Constants.RUNNER_GRAVITY_SCALE * 1.5f, new Vector2(0, 15f), 300),
     DIFFICULTY_11(11, new Vector2(-30f, 0f), Constants.RUNNER_GRAVITY_SCALE * 1.6f, new Vector2(0, 15f), 350),
     DIFFICULTY_12(12, new Vector2(-32f, 0f), Constants.RUNNER_GRAVITY_SCALE * 1.7f, new Vector2(0, 16f), 400),
-    DIFFICULTY_13(13, new Vector2(-34f, 0f), Constants.RUNNER_GRAVITY_SCALE * 2.1f, new Vector2(0, 18f), 500);
+    DIFFICULTY_13(13, new Vector2(-34f, 0f), Constants.RUNNER_GRAVITY_SCALE * 2.1f, new Vector2(0, 18f), 500),
+    DIFFICULTY_14(10, new Vector2(-36f, 0f), Constants.RUNNER_GRAVITY_SCALE * 2.1f, new Vector2(0, 19f), 600),
+    DIFFICULTY_15(11, new Vector2(-38f, 0f), Constants.RUNNER_GRAVITY_SCALE * 2.2f, new Vector2(0, 20f), 750),
+    DIFFICULTY_16(12, new Vector2(-40f, 0f), Constants.RUNNER_GRAVITY_SCALE * 2.3f, new Vector2(0, 21f), 800),
+    DIFFICULTY_17(13, new Vector2(-42f, 0f), Constants.RUNNER_GRAVITY_SCALE * 2.3f, new Vector2(0, 22f), 900);
 
     private int level;
     private Vector2 enemyLinearVelocity;

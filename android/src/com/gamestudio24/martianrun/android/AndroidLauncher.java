@@ -288,6 +288,36 @@ public class AndroidLauncher extends AndroidApplication implements GameHelper.Ga
         return getString(R.string.achievement_500_jump_street);
     }
 
+    @Override
+    public String get10DoubleJumpStreetAchievementId() {
+        return getString(R.string.achievement_10_jump_street);
+    }
+
+    @Override
+    public String get100DoubleJumpStreetAchievementId() {
+        return getString(R.string.achievement_100_jump_street);
+    }
+
+    @Override
+    public String get500DoubleJumpStreetAchievementId() {
+        return getString(R.string.achievement_500_jump_street);
+    }
+
+    @Override
+    public String get10PowerStompStreetAchievementId() {
+        return getString(R.string.achievement_10_jump_street);
+    }
+
+    @Override
+    public String get100PowerStompStreetAchievementId() {
+        return getString(R.string.achievement_100_jump_street);
+    }
+
+    @Override
+    public String get500PowerStompStreetAchievementId() {
+        return getString(R.string.achievement_500_jump_street);
+    }
+
     private String getAdMobUnitId() {
         return getString(R.string.ad_unit_id);
     }
