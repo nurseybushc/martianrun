@@ -34,6 +34,8 @@ public class Runner extends GameActor {
 
     private boolean dodging;
     private boolean jumping;
+    private boolean doubleJumping;
+    private boolean powerStomping;
     private int jumpNum = 0;
     private boolean hit;
     private Animation runningAnimation;
@@ -100,7 +102,11 @@ public class Runner extends GameActor {
             jumping = true;
             AudioUtils.getInstance().playSound(jumpSound);
             jumpCount++;
-            if(jumpNum == 1) doubleJumpCount++;
+            if(jumpNum == 1){
+                doubleJumpCount++;
+                doubleJumping = true;
+                System.out.println("doubleJumping");
+            }
             jumpNum++;
         }
     }
@@ -108,6 +114,9 @@ public class Runner extends GameActor {
     public void landed() {
         jumpNum = 0;
         jumping = false;
+        doubleJumping = false;
+        powerStomping = false;
+        System.out.println("landed");
     }
 
     public void dodge() {
@@ -115,7 +124,11 @@ public class Runner extends GameActor {
         if ((!jumping || jumpNum > 1) && !hit) {//check if not jumping or on 2nd jump
             body.setTransform(getUserData().getDodgePosition(), getUserData().getDodgeAngle());
             dodging = true;
-            powerStompCount++;
+            if(jumpNum > 1){
+                powerStompCount++;
+                powerStomping = true;
+                System.out.println("powerStomping");
+            }
         }
     }
 
@@ -130,6 +143,10 @@ public class Runner extends GameActor {
     public boolean isDodging() {
         return dodging;
     }
+
+    public boolean isDoubleJumping(){ return doubleJumping;}
+
+    public boolean isPowerStomping() { return powerStomping;}
 
     public void hit() {
         body.applyAngularImpulse(getUserData().getHitAngularImpulse(), true);

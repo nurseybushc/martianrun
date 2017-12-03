@@ -398,9 +398,11 @@ public class GameStage extends Stage implements ContactListener {
 
         if ((BodyUtils.bodyIsRunner(a) && BodyUtils.bodyIsEnemy(b)) ||
                 (BodyUtils.bodyIsEnemy(a) && BodyUtils.bodyIsRunner(b))) {
-            if (runner.isHit()) {
+            if (runner.isHit() || runner.isPowerStomping()) {
+                System.out.println("rnnner.isHit() || runner.isPowerStomping()");
                 return;
             }
+            System.out.println("runner.isPowerStomping():" + runner.isPowerStomping());
             runner.hit();
             //displayAd();
             int thisGameScore = score.getScore();
