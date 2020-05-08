@@ -19,6 +19,7 @@ package com.gamestudio24.martianrun.actors;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.gamestudio24.martianrun.box2d.EnemyUserData;
 import com.gamestudio24.martianrun.enums.GameState;
@@ -54,8 +55,7 @@ public class Enemy extends GameActor {
         if (GameManager.getInstance().getGameState() != GameState.PAUSED) {
             stateTime += Gdx.graphics.getDeltaTime();
         }
-
-        batch.draw(animation.getKeyFrame(stateTime, true), (screenRectangle.x - (screenRectangle.width * 0.1f)),
-                screenRectangle.y, screenRectangle.width * 1.2f, screenRectangle.height * 1.1f);
+        TextureRegion tr = (TextureRegion) animation.getKeyFrame(stateTime, true);
+        batch.draw(tr, (screenRectangle.x - (screenRectangle.width * 0.1f)), screenRectangle.y, screenRectangle.width * 1.2f, screenRectangle.height * 1.1f);
     }
 }

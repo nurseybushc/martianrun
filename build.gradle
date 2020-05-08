@@ -17,8 +17,8 @@ allprojects {
     version = '1.0'
     ext {
         appName = 'Martian Run!'
-        gdxVersion = '1.2.0'
-        roboVMVersion = '2.3.0'
+        gdxVersion = '1.9.10'
+        roboVMVersion = '2.3.7'
     }
 
     repositories {
@@ -52,10 +52,8 @@ project(":android") {
     dependencies {
         implementation project(":core")
         implementation fileTree(dir: 'libs', include: '*.jar')
-        //compile "com.google.android.gms:play-services:7.+"
         implementation "com.google.android.gms:play-services-games:11.4.2"
         implementation "com.google.android.gms:play-services-plus:11.4.2"
-        //compile 'com.android.support:appcompat-v7:23.0.1'
         implementation 'com.android.support:appcompat-v7:27.0.0'
         implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"

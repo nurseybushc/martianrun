@@ -20,9 +20,12 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.utils.Align;
 import com.gamestudio24.martianrun.enums.GameState;
 import com.gamestudio24.martianrun.utils.AssetsManager;
 import com.gamestudio24.martianrun.utils.GameManager;
+
+import java.util.Locale;
 
 public class Score extends Actor {
 
@@ -55,7 +58,7 @@ public class Score extends Actor {
         if (getScore() == 0) {
             return;
         }
-        font.drawWrapped(batch, String.format("x%d\n%d", getMultiplier(),getScore()), bounds.x, bounds.y, bounds.width, BitmapFont.HAlignment.RIGHT);//chance show multipler
+        font.draw(batch, String.format(Locale.US,"x%d\n%d", getMultiplier(),getScore()), bounds.x, bounds.y, bounds.width, Align.right, true);//chance show multipler
     }
 
     public int getScore() {

@@ -20,6 +20,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.utils.Align;
 import com.gamestudio24.martianrun.enums.GameState;
 import com.gamestudio24.martianrun.utils.AssetsManager;
 import com.gamestudio24.martianrun.utils.Constants;
@@ -41,8 +42,8 @@ public class PausedLabel extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
         if (GameManager.getInstance().getGameState() == GameState.PAUSED) {
-            font.drawWrapped(batch, Constants.PAUSED_LABEL, bounds.x, bounds.y, bounds.width,
-                    BitmapFont.HAlignment.CENTER);
+            font.draw(batch, Constants.PAUSED_LABEL, bounds.x, bounds.y, bounds.width,
+                    Align.center, true);
         }
     }
 
