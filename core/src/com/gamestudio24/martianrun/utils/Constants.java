@@ -53,7 +53,7 @@ public class Constants {
     public static final Vector2 ENEMY_LINEAR_VELOCITY = new Vector2(-10f, 0);
 
     public static final String BACKGROUND_ASSETS_ID = "background";
-    public static final String GROUND_ASSETS_ID = "ground";
+    public static final String GROUND_ASSETS_ID = "ground_earth";
     public static final String RUNNER_RUNNING_ASSETS_ID = "runner_running";
     public static final String RUNNER_DODGING_ASSETS_ID = "runner_dodging";
     public static final String RUNNER_HIT_ASSETS_ID = "runner_hit";
@@ -66,7 +66,7 @@ public class Constants {
     public static final String FLYING_WIDE_ENEMY_ASSETS_ID = "flying_wide_enemy";
 
     public static final String BACKGROUND_IMAGE_PATH = "background.png";
-    public static final String GROUND_IMAGE_PATH = "ground.png";
+    public static final String GROUND_IMAGE_PATH = "ground_earth.png";
     public static final String SPRITES_ATLAS_PATH = "sprites.txt";
     public static final String[] RUNNER_RUNNING_REGION_NAMES = new String[] {"alienBeige_run1", "alienBeige_run2"};
     public static final String RUNNER_DODGING_REGION_NAME = "alienBeige_dodge";
