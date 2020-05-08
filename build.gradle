@@ -1,11 +1,12 @@
 buildscript {
     repositories {
+        google()
+        jcenter()
         mavenCentral()
         mavenLocal()
     }
     dependencies {
-        //classpath 'com.android.tools.build:gradle:2.3.2'
-        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.android.tools.build:gradle:3.6.3'
     }
 }
 
@@ -21,6 +22,8 @@ allprojects {
     }
 
     repositories {
+        google()
+        jcenter()
         mavenLocal()
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
@@ -29,7 +32,7 @@ allprojects {
     }
 }
 
-project(":desktop") {
+/*project(":desktop") {
     apply plugin: "java"
 
     dependencies {
@@ -39,7 +42,7 @@ project(":desktop") {
         compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
         compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
     }
-}
+}*/
 
 project(":android") {
     apply plugin: "com.android.application"
@@ -47,22 +50,22 @@ project(":android") {
     configurations { natives }
 
     dependencies {
-        compile project(":core")
-        compile fileTree(dir: 'libs', include: '*.jar')
+        implementation project(":core")
+        implementation fileTree(dir: 'libs', include: '*.jar')
         //compile "com.google.android.gms:play-services:7.+"
-        compile "com.google.android.gms:play-services-games:11.4.2"
-        compile "com.google.android.gms:play-services-plus:11.4.2"
+        implementation "com.google.android.gms:play-services-games:11.4.2"
+        implementation "com.google.android.gms:play-services-plus:11.4.2"
         //compile 'com.android.support:appcompat-v7:23.0.1'
-        compile 'com.android.support:appcompat-v7:27.0.0'
-        compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+        implementation 'com.android.support:appcompat-v7:27.0.0'
+        implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
-        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi-v7a"
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
-        compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
@@ -73,9 +76,9 @@ project(":core") {
     apply plugin: "java"
 
     dependencies {
-        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
     }
 }
 

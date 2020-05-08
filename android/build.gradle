@@ -2,13 +2,13 @@ def loadProperty(name) {
     hasProperty(name) ? "${getProperty(name)}" : ""
 }
 android {
-    buildToolsVersion '26.0.2'
-    compileSdkVersion 26
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
         //applicationId "com.gamestudio24.cityescape.android"
         //noinspection OldTargetApi
-        targetSdkVersion 19
+        targetSdkVersion 28
         minSdkVersion 14
         //chance incremented these
         versionCode 22
@@ -27,7 +27,7 @@ android {
             jniLibs.srcDir 'libs'
         }
 
-        instrumentTest.setRoot('tests')
+        androidTest.setRoot('tests')
     }
 
     signingConfigs {
