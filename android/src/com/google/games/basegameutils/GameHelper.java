@@ -27,7 +27,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
-//import com.google.android.gms.appstate.AppStateManager;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.Api.ApiOptions.NoOptions;
@@ -38,11 +37,12 @@ import com.google.android.gms.games.GamesActivityResultCodes;
 import com.google.android.gms.games.multiplayer.Invitation;
 import com.google.android.gms.games.multiplayer.Multiplayer;
 import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMatch;
-import com.google.android.gms.games.request.GameRequest;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.Plus.PlusOptions;
 
 import java.util.ArrayList;
+
+//import com.google.android.gms.appstate.AppStateManager;
 
 public class GameHelper implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
@@ -166,7 +166,7 @@ public class GameHelper implements GoogleApiClient.ConnectionCallbacks,
      * If we have incoming requests when we connected to the games client, they
      * are here. Otherwise, it's null.
      */
-    ArrayList<GameRequest> mRequests;
+    //ArrayList<GameRequest> mRequests;
 
     // Listener
     GameHelperListener mListener = null;
@@ -457,9 +457,9 @@ public class GameHelper implements GoogleApiClient.ConnectionCallbacks,
         return mTurnBasedMatch != null;
     }
 
-    public boolean hasRequests() {
-        return mRequests != null;
-    }
+//    public boolean hasRequests() {
+//        return mRequests != null;
+//    }
 
     public void clearInvitation() {
         mInvitation = null;
@@ -469,9 +469,9 @@ public class GameHelper implements GoogleApiClient.ConnectionCallbacks,
         mTurnBasedMatch = null;
     }
 
-    public void clearRequests() {
-        mRequests = null;
-    }
+//    public void clearRequests() {
+//        mRequests = null;
+//    }
 
     /**
      * Returns the tbmp match received through an invitation notification. This
@@ -499,14 +499,14 @@ public class GameHelper implements GoogleApiClient.ConnectionCallbacks,
      * incoming requests that must be
      * handled.
      */
-    public ArrayList<GameRequest> getRequests() {
-        if (!mGoogleApiClient.isConnected()) {
-            Log.w(TAG, "Warning: getRequests() should only be called "
-                    + "when signed in, "
-                    + "that is, after getting onSignInSuceeded()");
-        }
-        return mRequests;
-    }
+//    public ArrayList<GameRequest> getRequests() {
+//        if (!mGoogleApiClient.isConnected()) {
+//            Log.w(TAG, "Warning: getRequests() should only be called "
+//                    + "when signed in, "
+//                    + "that is, after getting onSignInSuceeded()");
+//        }
+//        return mRequests;
+//    }
 
     /**
      * Enables debug logging
@@ -727,13 +727,13 @@ public class GameHelper implements GoogleApiClient.ConnectionCallbacks,
             }
 
             // Do we have any requests pending?
-            mRequests = Games.Requests
-                    .getGameRequestsFromBundle(connectionHint);
-            if (!mRequests.isEmpty()) {
-                // We have requests in onConnected's connectionHint.
-                debugLog("onConnected: connection hint has " + mRequests.size()
-                        + " request(s)");
-            }
+//            mRequests = Games.Requests
+//                    .getGameRequestsFromBundle(connectionHint);
+//            if (!mRequests.isEmpty()) {
+//                // We have requests in onConnected's connectionHint.
+//                debugLog("onConnected: connection hint has " + mRequests.size()
+//                        + " request(s)");
+//            }
 
             debugLog("onConnected: connection hint provided. Checking for TBMP game.");
             mTurnBasedMatch = connectionHint
