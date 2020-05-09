@@ -25,12 +25,12 @@ import android.widget.RelativeLayout;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.gamestudio24.martianrun.MartianRun;
-import com.gamestudio24.martianrun.android.BuildConfig;
 import com.gamestudio24.martianrun.android.R;
-import com.gamestudio24.martianrun.utils.Constants;
-import com.gamestudio24.martianrun.utils.GameEventListener;
-import com.gamestudio24.martianrun.utils.GameManager;
+import com.unocode.earthlingrun.EarthlingRun;
+import com.gamestudio24.martianrun.android.BuildConfig;
+import com.unocode.earthlingrun.utils.Constants;
+import com.unocode.earthlingrun.utils.GameEventListener;
+import com.unocode.earthlingrun.utils.GameManager;
 //import com.google.android.gms.ads.AdRequest;
 //import com.google.android.gms.ads.AdSize;
 //import com.google.android.gms.ads.AdView;
@@ -66,7 +66,7 @@ public class AndroidLauncher extends AndroidApplication implements GameHelper.Ga
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
 
         // Game view
-        View gameView = initializeForView(new MartianRun(this), config);
+        View gameView = initializeForView(new EarthlingRun(this), config);
         layout.addView(gameView);
 
 
