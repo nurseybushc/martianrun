@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-package com.gamestudio24.martianrun;
+package com.unocode.earthlingrun;
 
 import android.app.Application;
-import com.gamestudio24.martianrun.android.R;
 //import com.google.android.gms.analytics.GoogleAnalytics;
 
 public class MainApplication extends Application {

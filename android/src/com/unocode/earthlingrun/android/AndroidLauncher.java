@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gamestudio24.martianrun.android;
+package com.unocode.earthlingrun.android;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +26,8 @@ import android.widget.RelativeLayout;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.gamestudio24.martianrun.MartianRun;
+import com.gamestudio24.martianrun.android.BuildConfig;
+import com.gamestudio24.martianrun.android.R;
 import com.gamestudio24.martianrun.utils.Constants;
 import com.gamestudio24.martianrun.utils.GameEventListener;
 import com.gamestudio24.martianrun.utils.GameManager;

@@ -24,7 +24,7 @@
     <!--Enable automatic exception tracking-->
     <bool name="ga_reportUncaughtExceptions">true</bool>
 
-    <screenName name="com.gamestudio24.martianrun.android.AndroidLauncher">
+    <screenName name="com.unocode.earthlingrun.android.AndroidLauncher">
         Game Screen
     </screenName>
 
