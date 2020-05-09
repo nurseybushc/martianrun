@@ -72,6 +72,7 @@ task copyAndroidNatives() {
         }
     }
 }
+/*
 task run(type: Exec) {
     def path
     def localProperties = project.file("../local.properties")
@@ -92,7 +93,7 @@ task run(type: Exec) {
 
     def adb = path + "/platform-tools/adb"
     commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.gamestudio24.cityescape.android/com.gamestudio24.martianrun.android.AndroidLauncher'
-}
+}*/
 /*
 // sets up the Android Eclipse project, using the old Ant based build.
 eclipse {
