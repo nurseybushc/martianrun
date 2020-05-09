@@ -18,8 +18,8 @@
 
 <resources>
 
-    <string name="app_name">Martian Run!</string>
-<string name="app_id">unocode-martian-run</string>
+    <string name="app_name">Earthling Run!</string>
+<string name="app_id">unocode-earthling-run</string>
     <string name="leaderboard_high_scores">leaderboard_high_scores</string>
     <string name="achievement_getting_started">achievement_getting_started</string>
 

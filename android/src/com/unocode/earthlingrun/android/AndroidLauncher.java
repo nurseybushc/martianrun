@@ -25,9 +25,9 @@ import android.widget.RelativeLayout;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.gamestudio24.martianrun.android.R;
+import com.unocode.earthlingrun.android.R;
 import com.unocode.earthlingrun.EarthlingRun;
-import com.gamestudio24.martianrun.android.BuildConfig;
+import com.unocode.earthlingrun.android.BuildConfig;
 import com.unocode.earthlingrun.utils.Constants;
 import com.unocode.earthlingrun.utils.GameEventListener;
 import com.unocode.earthlingrun.utils.GameManager;
