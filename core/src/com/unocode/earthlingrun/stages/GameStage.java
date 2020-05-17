@@ -57,12 +57,12 @@ import com.unocode.earthlingrun.utils.GameManager;
 
 public class GameStage extends Stage implements ContactListener {
 
-    private static final int VIEWPORT_WIDTH = com.unocode.earthlingrun.utils.Constants.APP_WIDTH;
-    private static final int VIEWPORT_HEIGHT = com.unocode.earthlingrun.utils.Constants.APP_HEIGHT;
+    private static final int VIEWPORT_WIDTH = Constants.APP_WIDTH;
+    private static final int VIEWPORT_HEIGHT = Constants.APP_HEIGHT;
 
     private World world;
-    private com.unocode.earthlingrun.actors.Ground ground;
-    private com.unocode.earthlingrun.actors.Runner runner;
+    private Ground ground;
+    private Runner runner;
 
     private final float TIME_STEP = 1 / 300f;
     private float accumulator = 0f;
@@ -74,12 +74,12 @@ public class GameStage extends Stage implements ContactListener {
 
     private SoundButton soundButton;
     private MusicButton musicButton;
-    private com.unocode.earthlingrun.actors.menu.PauseButton pauseButton;
-    private com.unocode.earthlingrun.actors.menu.StartButton startButton;
-    private com.unocode.earthlingrun.actors.menu.LeaderboardButton leaderboardButton;
+    private PauseButton pauseButton;
+    private StartButton startButton;
+    private LeaderboardButton leaderboardButton;
     private AboutButton aboutButton;
-    private com.unocode.earthlingrun.actors.menu.ShareButton shareButton;
-    private com.unocode.earthlingrun.actors.menu.AchievementsButton achievementsButton;
+    private ShareButton shareButton;
+    private AchievementsButton achievementsButton;
 
     private Score score;
     private float totalTimePassed;
@@ -154,7 +154,7 @@ public class GameStage extends Stage implements ContactListener {
         Rectangle pauseButtonBounds = new Rectangle(getCamera().viewportWidth / 64,
                 getCamera().viewportHeight * 1 / 2, getCamera().viewportHeight / 10,
                 getCamera().viewportHeight / 10);
-        pauseButton = new com.unocode.earthlingrun.actors.menu.PauseButton(pauseButtonBounds, new GamePauseButtonListener());
+        pauseButton = new PauseButton(pauseButtonBounds, new GamePauseButtonListener());
         addActor(pauseButton);
     }
 
@@ -173,7 +173,7 @@ public class GameStage extends Stage implements ContactListener {
         Rectangle startButtonBounds = new Rectangle(getCamera().viewportWidth * 3 / 16,
                 getCamera().viewportHeight / 4, getCamera().viewportWidth / 4,
                 getCamera().viewportWidth / 4);
-        startButton = new com.unocode.earthlingrun.actors.menu.StartButton(startButtonBounds, new GameStartButtonListener());
+        startButton = new StartButton(startButtonBounds, new GameStartButtonListener());
         addActor(startButton);
     }
 
@@ -181,7 +181,7 @@ public class GameStage extends Stage implements ContactListener {
         Rectangle leaderboardButtonBounds = new Rectangle(getCamera().viewportWidth * 9 / 16,
                 getCamera().viewportHeight / 4, getCamera().viewportWidth / 4,
                 getCamera().viewportWidth / 4);
-        leaderboardButton = new com.unocode.earthlingrun.actors.menu.LeaderboardButton(leaderboardButtonBounds,
+        leaderboardButton = new LeaderboardButton(leaderboardButtonBounds,
                 new GameLeaderboardButtonListener());
         addActor(leaderboardButton);
     }
@@ -198,7 +198,7 @@ public class GameStage extends Stage implements ContactListener {
         Rectangle shareButtonBounds = new Rectangle(getCamera().viewportWidth / 64,
                 getCamera().viewportHeight / 2, getCamera().viewportHeight / 10,
                 getCamera().viewportHeight / 10);
-        shareButton = new com.unocode.earthlingrun.actors.menu.ShareButton(shareButtonBounds, new GameShareButtonListener());
+        shareButton = new ShareButton(shareButtonBounds, new GameShareButtonListener());
         addActor(shareButton);
     }
 
@@ -206,7 +206,7 @@ public class GameStage extends Stage implements ContactListener {
         Rectangle achievementsButtonBounds = new Rectangle(getCamera().viewportWidth * 23 / 25,
                 getCamera().viewportHeight * 8/ 20, getCamera().viewportHeight / 10,
                 getCamera().viewportHeight / 10);
-        achievementsButton = new com.unocode.earthlingrun.actors.menu.AchievementsButton(achievementsButtonBounds,
+        achievementsButton = new AchievementsButton(achievementsButtonBounds,
                 new GameAchievementsButtonListener());
         addActor(achievementsButton);
     }
@@ -249,10 +249,12 @@ public class GameStage extends Stage implements ContactListener {
 
     private void setUpTouchControlAreas() {
         touchPoint = new Vector3();
-        screenLeftSide = new Rectangle(0, 0, getCamera().viewportWidth / 2,
-                getCamera().viewportHeight);
-        screenRightSide = new Rectangle(getCamera().viewportWidth / 2, 0,
-                getCamera().viewportWidth / 2, getCamera().viewportHeight);
+        //screenLeftSide = new Rectangle(0, 0, getCamera().viewportWidth / 2,
+        //        getCamera().viewportHeight);
+        screenLeftSide = new Rectangle(getCamera().viewportWidth / 2, 0,
+                getCamera().viewportWidth / 2, getCamera().viewportHeight / 2);
+        screenRightSide = new Rectangle(getCamera().viewportWidth / 2, getCamera().viewportHeight / 2,
+                getCamera().viewportWidth / 2, getCamera().viewportHeight / 2);
     }
 
     private void setUpPauseLabel() {
@@ -272,19 +274,21 @@ public class GameStage extends Stage implements ContactListener {
 
     private void setUpLeftTutorial() {
         float width = getCamera().viewportHeight / 4;
+        float height = width;
         float x = getCamera().viewportWidth / 4 - width / 2;
         Rectangle leftTutorialBounds = new Rectangle(x, getCamera().viewportHeight * 9 / 20, width,
-                width);
-        addActor(new com.unocode.earthlingrun.actors.menu.Tutorial(leftTutorialBounds, com.unocode.earthlingrun.utils.Constants.TUTORIAL_LEFT_REGION_NAME,
-                com.unocode.earthlingrun.utils.Constants.TUTORIAL_LEFT_TEXT));
+                height);
+        addActor(new Tutorial(leftTutorialBounds, Constants.TUTORIAL_LEFT_REGION_NAME,
+                Constants.TUTORIAL_LEFT_TEXT));
     }
 
     private void setUpRightTutorial() {
         float width = getCamera().viewportHeight / 4;
+        float height = width;
         float x = getCamera().viewportWidth * 3 / 4 - width / 2;
         Rectangle rightTutorialBounds = new Rectangle(x, getCamera().viewportHeight * 9 / 20, width,
-                width);
-        addActor(new Tutorial(rightTutorialBounds, com.unocode.earthlingrun.utils.Constants.TUTORIAL_RIGHT_REGION_NAME,
+                height);
+        addActor(new Tutorial(rightTutorialBounds, Constants.TUTORIAL_RIGHT_REGION_NAME,
                 Constants.TUTORIAL_RIGHT_TEXT));
     }
 
@@ -292,11 +296,11 @@ public class GameStage extends Stage implements ContactListener {
     public void act(float delta) {
         super.act(delta);
 
-        if (com.unocode.earthlingrun.utils.GameManager.getInstance().getGameState() == com.unocode.earthlingrun.enums.GameState.PAUSED) return;
+        if (GameManager.getInstance().getGameState() == GameState.PAUSED) return;
 
-        if (com.unocode.earthlingrun.utils.GameManager.getInstance().getGameState() == com.unocode.earthlingrun.enums.GameState.RUNNING) {
+        if (GameManager.getInstance().getGameState() == GameState.RUNNING) {
             totalTimePassed += delta;
-            updateDifficulty();
+            //updateDifficulty();
         }
 
         Array<Body> bodies = new Array<Body>(world.getBodyCount());
@@ -319,8 +323,8 @@ public class GameStage extends Stage implements ContactListener {
     }
 
     private void update(Body body) {
-        if (!com.unocode.earthlingrun.utils.BodyUtils.bodyInBounds(body)) {
-            if (com.unocode.earthlingrun.utils.BodyUtils.bodyIsEnemy(body) && !runner.isHit()) {
+        if (!BodyUtils.bodyInBounds(body)) {
+            if (BodyUtils.bodyIsEnemy(body) && !runner.isHit()) {
                 createEnemy();
             }
             world.destroyBody(body);
@@ -328,9 +332,9 @@ public class GameStage extends Stage implements ContactListener {
     }
 
     private void createEnemy() {
-        com.unocode.earthlingrun.actors.Enemy enemy = new Enemy(WorldUtils.createEnemy(world));
+        Enemy enemy = new Enemy(WorldUtils.createEnemy(world));
         enemy.getUserData().setLinearVelocity(
-                com.unocode.earthlingrun.utils.GameManager.getInstance().getDifficulty().getEnemyLinearVelocity());
+                GameManager.getInstance().getDifficulty().getEnemyLinearVelocity());
         addActor(enemy);
     }
 
@@ -345,7 +349,7 @@ public class GameStage extends Stage implements ContactListener {
             return super.touchDown(x, y, pointer, button);
         }
 
-        if (com.unocode.earthlingrun.utils.GameManager.getInstance().getGameState() != com.unocode.earthlingrun.enums.GameState.RUNNING) {
+        if (GameManager.getInstance().getGameState() != GameState.RUNNING) {
             return super.touchDown(x, y, pointer, button);
         }
 
@@ -361,7 +365,7 @@ public class GameStage extends Stage implements ContactListener {
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 
-        if (com.unocode.earthlingrun.utils.GameManager.getInstance().getGameState() != com.unocode.earthlingrun.enums.GameState.RUNNING) {
+        if (GameManager.getInstance().getGameState() != GameState.RUNNING) {
             return super.touchUp(screenX, screenY, pointer, button);
         }
 
@@ -375,7 +379,7 @@ public class GameStage extends Stage implements ContactListener {
     private boolean menuControlTouched(float x, float y) {
         boolean touched = false;
 
-        switch (com.unocode.earthlingrun.utils.GameManager.getInstance().getGameState()) {
+        switch (GameManager.getInstance().getGameState()) {
             case OVER:
                 touched = startButton.getBounds().contains(x, y)
                         || leaderboardButton.getBounds().contains(x, y)
@@ -415,10 +419,10 @@ public class GameStage extends Stage implements ContactListener {
         Body a = contact.getFixtureA().getBody();
         Body b = contact.getFixtureB().getBody();
 
-        if ((com.unocode.earthlingrun.utils.BodyUtils.bodyIsRunner(a) && com.unocode.earthlingrun.utils.BodyUtils.bodyIsEnemy(b)) ||
-                (com.unocode.earthlingrun.utils.BodyUtils.bodyIsEnemy(a) && com.unocode.earthlingrun.utils.BodyUtils.bodyIsRunner(b))) {
+        if ((BodyUtils.bodyIsRunner(a) && BodyUtils.bodyIsEnemy(b)) ||
+                (BodyUtils.bodyIsEnemy(a) && BodyUtils.bodyIsRunner(b))) {
             if (runner.isHit() || runner.isPowerStomping()) {
-                System.out.println("rnnner.isHit() || runner.isPowerStomping()");
+                System.out.println("runner.isHit() || runner.isPowerStomping()");
                 return;
             }
             System.out.println("runner.isPowerStomping():" + runner.isPowerStomping());
@@ -429,18 +433,18 @@ public class GameStage extends Stage implements ContactListener {
             int thisGameJumpCount = runner.getJumpCount();
             int thisGameDoubleJumpCount = runner.getDoubleJumpCount();
             int thisGamePowerStompCount = runner.getPowerStompCount();
-            int difficulty = com.unocode.earthlingrun.utils.GameManager.getInstance().getDifficulty().getLevel();
-            int difficultyScale = com.unocode.earthlingrun.utils.GameManager.getInstance().getDifficultyScale();
-            com.unocode.earthlingrun.utils.GameManager.getInstance().submitScore(thisGameScore);
+            int difficulty = GameManager.getInstance().getDifficulty().getLevel();
+            int difficultyScale = GameManager.getInstance().getDifficultyScale();
+            GameManager.getInstance().submitScore(thisGameScore);
             onGameOver();
-            com.unocode.earthlingrun.utils.GameManager.getInstance().addGamePlayed();
-            com.unocode.earthlingrun.utils.GameManager.getInstance().addJumpCount(thisGameJumpCount);
-            com.unocode.earthlingrun.utils.GameManager.getInstance().addDoubleJumpCount(thisGameDoubleJumpCount);
-            com.unocode.earthlingrun.utils.GameManager.getInstance().addPowerStompCount(thisGamePowerStompCount);
+            GameManager.getInstance().addGamePlayed();
+            GameManager.getInstance().addJumpCount(thisGameJumpCount);
+            GameManager.getInstance().addDoubleJumpCount(thisGameDoubleJumpCount);
+            GameManager.getInstance().addPowerStompCount(thisGamePowerStompCount);
             System.out.println("GameEnd - score:" + thisGameScore + " | multi:" + thisGameMult + " | jumps:" + thisGameJumpCount + " | double jumps:" + thisGameDoubleJumpCount + " | power stomps:" + thisGamePowerStompCount + " | difficulty:" + difficulty + " | diffculty scale:" + difficultyScale);
 
-        } else if ((com.unocode.earthlingrun.utils.BodyUtils.bodyIsRunner(a) && com.unocode.earthlingrun.utils.BodyUtils.bodyIsGround(b)) ||
-                (com.unocode.earthlingrun.utils.BodyUtils.bodyIsGround(a) && BodyUtils.bodyIsRunner(b))) {
+        } else if ((BodyUtils.bodyIsRunner(a) && BodyUtils.bodyIsGround(b)) ||
+                (BodyUtils.bodyIsGround(a) && BodyUtils.bodyIsRunner(b))) {
             runner.landed();
         }
 
@@ -448,21 +452,21 @@ public class GameStage extends Stage implements ContactListener {
 
     private void updateDifficulty() {
 
-        if (com.unocode.earthlingrun.utils.GameManager.getInstance().isMaxDifficulty()) {
+        if (!GameManager.getInstance().isMaxDifficulty()) {
             return;
         }
 
-        com.unocode.earthlingrun.enums.Difficulty currentDifficulty = com.unocode.earthlingrun.utils.GameManager.getInstance().getDifficulty();
+        Difficulty currentDifficulty = GameManager.getInstance().getDifficulty();
 
-        com.unocode.earthlingrun.utils.GameManager.getInstance().setDifficultyScale(1);
-        if (totalTimePassed > com.unocode.earthlingrun.utils.GameManager.getInstance().getDifficulty().getLevel() * com.unocode.earthlingrun.utils.GameManager.getInstance().getDifficultyScale()) {
+        GameManager.getInstance().setDifficultyScale(1);
+        if (totalTimePassed > GameManager.getInstance().getDifficulty().getLevel() * GameManager.getInstance().getDifficultyScale()) {
 
             int nextDifficulty = currentDifficulty.getLevel() + 1;
             String difficultyName = "DIFFICULTY_" + nextDifficulty;
-            com.unocode.earthlingrun.utils.GameManager.getInstance().setDifficulty(Difficulty.valueOf(difficultyName));
+            GameManager.getInstance().setDifficulty(Difficulty.valueOf(difficultyName));
 
-            runner.onDifficultyChange(com.unocode.earthlingrun.utils.GameManager.getInstance().getDifficulty());
-            score.setMultiplier(com.unocode.earthlingrun.utils.GameManager.getInstance().getDifficulty().getScoreMultiplier());
+            runner.onDifficultyChange(GameManager.getInstance().getDifficulty());
+            score.setMultiplier(GameManager.getInstance().getDifficulty().getScoreMultiplier());
 
             //displayAd();
         }
@@ -521,7 +525,7 @@ public class GameStage extends Stage implements ContactListener {
 
         @Override
         public void onLeaderboard() {
-            com.unocode.earthlingrun.utils.GameManager.getInstance().displayLeaderboard();
+            GameManager.getInstance().displayLeaderboard();
         }
 
     }
@@ -530,7 +534,7 @@ public class GameStage extends Stage implements ContactListener {
 
         @Override
         public void onAbout() {
-            if (com.unocode.earthlingrun.utils.GameManager.getInstance().getGameState() == com.unocode.earthlingrun.enums.GameState.OVER) {
+            if (GameManager.getInstance().getGameState() == GameState.OVER) {
                 onGameAbout();
             } else {
                 clear();
@@ -546,7 +550,7 @@ public class GameStage extends Stage implements ContactListener {
 
         @Override
         public void onShare() {
-            com.unocode.earthlingrun.utils.GameManager.getInstance().share();
+            GameManager.getInstance().share();
         }
 
     }
@@ -556,22 +560,22 @@ public class GameStage extends Stage implements ContactListener {
 
         @Override
         public void onAchievements() {
-            com.unocode.earthlingrun.utils.GameManager.getInstance().displayAchievements();
+            GameManager.getInstance().displayAchievements();
         }
 
     }
 
     private void onGamePaused() {
-        com.unocode.earthlingrun.utils.GameManager.getInstance().setGameState(com.unocode.earthlingrun.enums.GameState.PAUSED);
+        GameManager.getInstance().setGameState(GameState.PAUSED);
     }
 
     private void onGameResumed() {
-        com.unocode.earthlingrun.utils.GameManager.getInstance().setGameState(com.unocode.earthlingrun.enums.GameState.RUNNING);
+        GameManager.getInstance().setGameState(GameState.RUNNING);
     }
 
     private void onGameOver() {
-        com.unocode.earthlingrun.utils.GameManager.getInstance().setGameState(com.unocode.earthlingrun.enums.GameState.OVER);
-        com.unocode.earthlingrun.utils.GameManager.getInstance().resetDifficulty();
+        GameManager.getInstance().setGameState(GameState.OVER);
+        GameManager.getInstance().resetDifficulty();
         totalTimePassed = 0;
         setUpMainMenu();
     }

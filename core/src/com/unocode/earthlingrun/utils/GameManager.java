@@ -36,8 +36,8 @@ public class GameManager implements GameEventListener {
     private static final String ACHIEVEMENT_COUNT_PREFERENCE_SUFFIX = "_count";
     private static final String ACHIEVEMENT_UNLOCKED_PREFERENCE_SUFFIX = "_unlocked";
 
-    private com.unocode.earthlingrun.enums.GameState gameState;
-    private com.unocode.earthlingrun.enums.Difficulty difficulty;
+    private GameState gameState;
+    private Difficulty difficulty;
     private GameEventListener gameEventListener;
 
     public static GameManager getInstance() {
@@ -48,7 +48,7 @@ public class GameManager implements GameEventListener {
         gameState = com.unocode.earthlingrun.enums.GameState.OVER;
     }
 
-    public com.unocode.earthlingrun.enums.GameState getGameState() {
+    public GameState getGameState() {
         return gameState;
     }
 
@@ -56,7 +56,7 @@ public class GameManager implements GameEventListener {
         this.gameState = gameState;
     }
 
-    public com.unocode.earthlingrun.enums.Difficulty getDifficulty() {
+    public Difficulty getDifficulty() {
         return difficulty;
     }
 
@@ -75,7 +75,7 @@ public class GameManager implements GameEventListener {
     }
 
     public boolean isMaxDifficulty() {
-        boolean atMixDiff = difficulty == com.unocode.earthlingrun.enums.Difficulty.values()[com.unocode.earthlingrun.enums.Difficulty.values().length - 1];
+        boolean atMixDiff = difficulty == Difficulty.values()[Difficulty.values().length - 1];
         //System.out.println("GameMan - difficulty:" + difficulty + " | atMaxDiff:" + atMixDiff);
         return atMixDiff;
     }

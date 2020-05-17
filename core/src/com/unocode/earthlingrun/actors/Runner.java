@@ -55,13 +55,13 @@ public class Runner extends GameActor {
         doubleJumpCount = 0;
         powerStompCount = 0;
 
-        runningAnimation = com.unocode.earthlingrun.utils.AssetsManager.getAnimation(com.unocode.earthlingrun.utils.Constants.RUNNER_RUNNING_ASSETS_ID);
+        runningAnimation = AssetsManager.getAnimation(Constants.RUNNER_RUNNING_ASSETS_ID);
         stateTime = 0f;
-        jumpingTexture = com.unocode.earthlingrun.utils.AssetsManager.getTextureRegion(com.unocode.earthlingrun.utils.Constants.RUNNER_JUMPING_ASSETS_ID);
-        dodgingTexture = com.unocode.earthlingrun.utils.AssetsManager.getTextureRegion(com.unocode.earthlingrun.utils.Constants.RUNNER_DODGING_ASSETS_ID);
+        jumpingTexture = AssetsManager.getTextureRegion(Constants.RUNNER_JUMPING_ASSETS_ID);
+        dodgingTexture = AssetsManager.getTextureRegion(Constants.RUNNER_DODGING_ASSETS_ID);
         hitTexture = AssetsManager.getTextureRegion(Constants.RUNNER_HIT_ASSETS_ID);
-        jumpSound = com.unocode.earthlingrun.utils.AudioUtils.getInstance().getJumpSound();
-        hitSound = com.unocode.earthlingrun.utils.AudioUtils.getInstance().getHitSound();
+        jumpSound = AudioUtils.getInstance().getJumpSound();
+        hitSound = AudioUtils.getInstance().getHitSound();
     }
 
     @Override

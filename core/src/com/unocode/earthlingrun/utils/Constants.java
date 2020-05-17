@@ -27,6 +27,7 @@ public class Constants {
     public static final float WORLD_TO_SCREEN = 32;
 
     public static final Vector2 WORLD_GRAVITY = new Vector2(0, -10);
+    //public static final Vector2 WORLD_GRAVITY = new Vector2(0, -5);
 
     public static final float GROUND_X = 0;
     public static final float GROUND_Y = 0;
@@ -64,6 +65,7 @@ public class Constants {
     public static final String RUNNING_WIDE_ENEMY_ASSETS_ID = "running_wide_enemy";
     public static final String FLYING_SMALL_ENEMY_ASSETS_ID = "flying_small_enemy";
     public static final String FLYING_WIDE_ENEMY_ASSETS_ID = "flying_wide_enemy";
+    public static final String COIN = "coin";
 
     public static final String BACKGROUND_IMAGE_PATH = "background.png";
     public static final String GROUND_IMAGE_PATH = "ground_earth.png";
@@ -79,6 +81,7 @@ public class Constants {
     public static final String[] RUNNING_WIDE_ENEMY_REGION_NAMES = new String[] {"worm_walk1", "worm_walk2"};
     public static final String[] FLYING_SMALL_ENEMY_REGION_NAMES = new String[] {"bee_fly1", "bee_fly2"};
     public static final String[] FLYING_WIDE_ENEMY_REGION_NAMES = new String[] {"fly_fly1", "fly_fly2"};
+    public static final String[] COIN_REGION_NAMES = new String[] {"coin_1", "coin_2", "coin_3"};
 
     public static final String SOUND_ON_REGION_NAME = "sound_on";
     public static final String SOUND_OFF_REGION_NAME = "sound_off";
@@ -95,8 +98,8 @@ public class Constants {
 
     public static final String TUTORIAL_LEFT_REGION_NAME = "tutorial_left";
     public static final String TUTORIAL_RIGHT_REGION_NAME = "tutorial_right";
-    public static final String TUTORIAL_LEFT_TEXT = "\nTap left to dodge";
-    public static final String TUTORIAL_RIGHT_TEXT = "\nTap right to jump";
+    public static final String TUTORIAL_LEFT_TEXT = "\nTap bottom right to dodge";
+    public static final String TUTORIAL_RIGHT_TEXT = "\nTap top right to jump";
 
     public static final String RUNNER_JUMPING_SOUND = "jump.wav";
     public static final String RUNNER_HIT_SOUND = "hit.wav";

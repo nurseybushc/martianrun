@@ -16,7 +16,7 @@ allprojects {
 
     version = '1.0'
     ext {
-        appName = 'Martian Run!'
+        appName = 'Earthling Run!'
         gdxVersion = '1.9.10'
         roboVMVersion = '2.3.7'
     }

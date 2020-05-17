@@ -23,10 +23,10 @@ import java.util.Random;
 public class RandomUtils {
 
     /**
-     * @return a random {@link com.unocode.earthlingrun.enums.EnemyType}
+     * @return a random {@link EnemyType}
      */
-    public static com.unocode.earthlingrun.enums.EnemyType getRandomEnemyType() {
-        RandomEnum<com.unocode.earthlingrun.enums.EnemyType> randomEnum = new RandomEnum<com.unocode.earthlingrun.enums.EnemyType>(EnemyType.class);
+    public static EnemyType getRandomEnemyType() {
+        RandomEnum<EnemyType> randomEnum = new RandomEnum<EnemyType>(EnemyType.class);
         return randomEnum.random();
     }
 
